@@ -9,7 +9,27 @@ amount.oninput = () => {
 }
 form.onsubmit = (event) =>{
     event.preventDefault()
+    const newExpense ={
+        id: new Date().getTime(),
+        expense: expense.value,
+        category_id: category.value,
+        category_name: category.options[category.selectedIndex].text,
+        amount: amount.value,
+        created_at: new Date(),
+    }
+    expenseAdd(newExpense)
 }
+
+function expenseAdd(newExpense){
+    try {
+        const expenseItem = document.createElement("li")
+        expenseItem.classList.add("expense")
+    } catch (error) {
+        alert("Não foi possivel cadastrar a dispesa")
+        console.log(error)
+    }
+}
+
 function formatCurrencyBRL(value){
     value = value.toLocaleString("pt-BR",{
         style: "currency",

@@ -43,6 +43,19 @@ function expenseAdd(newExpense){
         expenseItem.append(expenseInfo)
         expenseList.append(expenseItem)
 
+        const expenseAmount = document.createElement("span")
+        expenseAmount.classList.add("expense-amount")
+        expenseAmount.innerHTML = `<small>R$</small>${newExpense.amount.toUpperCase().replace("R$","")}`
+        expenseItem.append(expenseAmount)
+        expenseList.append(expenseItem)
+
+        const removeIcon = document.createElement("img")
+        removeIcon.classList.add("remove-icon")
+        removeIcon.setAttribute("src","img/remove.svg")
+        removeIcon.setAttribute("alt","remover")
+        expenseItem.append(removeIcon)
+        expenseList.append(expenseItem)
+
     } catch (error) {
         alert("Não foi possivel cadastrar a dispesa")
         console.log(error)

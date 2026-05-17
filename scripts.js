@@ -5,7 +5,7 @@ const category = document.getElementById("category");
 
 const expenseList = document.querySelector("ul");
 const expenseQuantity = document.querySelector("aside header p span");
-const expenseTotal = document.querySelector("aside header h2")
+const expenseTotal = document.querySelector("aside header h2");
 amount.oninput = () => {
   let value = amount.value.replace(/\D+/g, "");
   value = Number(value) / 100;
@@ -23,6 +23,14 @@ form.onsubmit = (event) => {
   };
   expenseAdd(newExpense);
 };
+
+expenseList.addEventListener("click", function (event) {
+  if (event.target.classList.contains("remove-icon")) {
+    const item = event.target.closest(".expense");
+    item.remove();
+  }
+  updateTotals();
+});
 
 function expenseAdd(newExpense) {
   try {
@@ -57,7 +65,7 @@ function expenseAdd(newExpense) {
     removeIcon.setAttribute("alt", "remover");
     expenseItem.append(removeIcon);
     expenseList.append(expenseItem);
-
+    formClear()
     updateTotals();
   } catch (error) {
     alert("Não foi possivel cadastrar a dispesa");
@@ -91,13 +99,20 @@ function updateTotals() {
       total += Number(value);
     }
 
-    const symbolBRL = document.createElement("small")
-    symbolBRL.textContent = "R$"
-    total = formatCurrencyBRL(total).replace("R$", "").trim()
-    expenseTotal.innerHTML = "" //limpando o conteudo e embaixo adicionando novamente
-    expenseTotal.append(symbolBRL, total)
+    const symbolBRL = document.createElement("small");
+    symbolBRL.textContent = "R$";
+    total = formatCurrencyBRL(total).replace("R$", "").trim();
+    expenseTotal.innerHTML = ""; //limpando o conteudo e embaixo adicionando novamente
+    expenseTotal.append(symbolBRL, total);
   } catch (error) {
     console.log(error);
     alert("Não foi possivel atualizar totais");
   }
+}
+
+function formClear(){
+  expense.value = "",
+  category.value = ""
+  amount.value = ""
+  expense.focus()
 }

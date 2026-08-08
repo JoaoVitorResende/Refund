@@ -43,23 +43,6 @@ To run this project locally, no complex installations are required. Follow these
 * A modern web browser (Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, etc.)
 * A code editor like VS Code (optional, for editing)
 
-### Execution Instructions
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com
-   ```
-
-2. Navigate to the project directory:
-   ```bash
-   cd refund
-   ```
-
-3. Open the project:
-   Simply double-click the `index.html` file to open it directly in your browser, or use an extension like **Live Server** in VS Code.
-
----
-
 ## Workflow Example
 
 1. **Input Details**: Enter the description, date, and exact amount of the expense.
